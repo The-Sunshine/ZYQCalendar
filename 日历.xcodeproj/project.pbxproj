@@ -1,0 +1,539 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CF80B2AD1F0B932500326C3B /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = CF80B2AC1F0B932500326C3B /* 1.png */; };
+		CF8374901F0CDD5F0045D5D4 /* ZYQCalenderView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF83748F1F0CDD5F0045D5D4 /* ZYQCalenderView.m */; };
+		CF924B1C1ECACE7A00DF3100 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CF924B1B1ECACE7A00DF3100 /* main.m */; };
+		CF924B1F1ECACE7B00DF3100 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF924B1E1ECACE7B00DF3100 /* AppDelegate.m */; };
+		CF924B221ECACE7B00DF3100 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF924B211ECACE7B00DF3100 /* ViewController.m */; };
+		CF924B271ECACE7B00DF3100 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF924B261ECACE7B00DF3100 /* Assets.xcassets */; };
+		CF924B2A1ECACE7B00DF3100 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF924B281ECACE7B00DF3100 /* LaunchScreen.storyboard */; };
+		CF924B351ECACE7B00DF3100 /* __Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = CF924B341ECACE7B00DF3100 /* __Tests.m */; };
+		CF924B401ECACE7B00DF3100 /* __UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = CF924B3F1ECACE7B00DF3100 /* __UITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CF924B311ECACE7B00DF3100 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CF924B0F1ECACE7A00DF3100 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CF924B161ECACE7A00DF3100;
+			remoteInfo = "日历";
+		};
+		CF924B3C1ECACE7B00DF3100 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CF924B0F1ECACE7A00DF3100 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CF924B161ECACE7A00DF3100;
+			remoteInfo = "日历";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		CF80B2AC1F0B932500326C3B /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
+		CF83748E1F0CDD5F0045D5D4 /* ZYQCalenderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYQCalenderView.h; sourceTree = "<group>"; };
+		CF83748F1F0CDD5F0045D5D4 /* ZYQCalenderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYQCalenderView.m; sourceTree = "<group>"; };
+		CF924B171ECACE7A00DF3100 /* 日历.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "日历.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF924B1B1ECACE7A00DF3100 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CF924B1D1ECACE7B00DF3100 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		CF924B1E1ECACE7B00DF3100 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		CF924B201ECACE7B00DF3100 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		CF924B211ECACE7B00DF3100 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		CF924B261ECACE7B00DF3100 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CF924B291ECACE7B00DF3100 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CF924B2B1ECACE7B00DF3100 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CF924B301ECACE7B00DF3100 /* 日历Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "日历Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF924B341ECACE7B00DF3100 /* __Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = __Tests.m; sourceTree = "<group>"; };
+		CF924B361ECACE7B00DF3100 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CF924B3B1ECACE7B00DF3100 /* 日历UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "日历UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF924B3F1ECACE7B00DF3100 /* __UITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = __UITests.m; sourceTree = "<group>"; };
+		CF924B411ECACE7B00DF3100 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CF924B141ECACE7A00DF3100 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CF924B2D1ECACE7B00DF3100 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CF924B381ECACE7B00DF3100 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CF83748D1F0CDD5F0045D5D4 /* ZYQCalenderView */ = {
+			isa = PBXGroup;
+			children = (
+				CF83748E1F0CDD5F0045D5D4 /* ZYQCalenderView.h */,
+				CF83748F1F0CDD5F0045D5D4 /* ZYQCalenderView.m */,
+			);
+			path = ZYQCalenderView;
+			sourceTree = "<group>";
+		};
+		CF924B0E1ECACE7900DF3100 = {
+			isa = PBXGroup;
+			children = (
+				CF924B191ECACE7A00DF3100 /* 日历 */,
+				CF924B331ECACE7B00DF3100 /* 日历Tests */,
+				CF924B3E1ECACE7B00DF3100 /* 日历UITests */,
+				CF924B181ECACE7A00DF3100 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CF924B181ECACE7A00DF3100 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CF924B171ECACE7A00DF3100 /* 日历.app */,
+				CF924B301ECACE7B00DF3100 /* 日历Tests.xctest */,
+				CF924B3B1ECACE7B00DF3100 /* 日历UITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CF924B191ECACE7A00DF3100 /* 日历 */ = {
+			isa = PBXGroup;
+			children = (
+				CF924B1D1ECACE7B00DF3100 /* AppDelegate.h */,
+				CF924B1E1ECACE7B00DF3100 /* AppDelegate.m */,
+				CF924B201ECACE7B00DF3100 /* ViewController.h */,
+				CF924B211ECACE7B00DF3100 /* ViewController.m */,
+				CF83748D1F0CDD5F0045D5D4 /* ZYQCalenderView */,
+				CF80B2AC1F0B932500326C3B /* 1.png */,
+				CF924B261ECACE7B00DF3100 /* Assets.xcassets */,
+				CF924B281ECACE7B00DF3100 /* LaunchScreen.storyboard */,
+				CF924B2B1ECACE7B00DF3100 /* Info.plist */,
+				CF924B1A1ECACE7A00DF3100 /* Supporting Files */,
+			);
+			path = "日历";
+			sourceTree = "<group>";
+		};
+		CF924B1A1ECACE7A00DF3100 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CF924B1B1ECACE7A00DF3100 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CF924B331ECACE7B00DF3100 /* 日历Tests */ = {
+			isa = PBXGroup;
+			children = (
+				CF924B341ECACE7B00DF3100 /* __Tests.m */,
+				CF924B361ECACE7B00DF3100 /* Info.plist */,
+			);
+			path = "日历Tests";
+			sourceTree = "<group>";
+		};
+		CF924B3E1ECACE7B00DF3100 /* 日历UITests */ = {
+			isa = PBXGroup;
+			children = (
+				CF924B3F1ECACE7B00DF3100 /* __UITests.m */,
+				CF924B411ECACE7B00DF3100 /* Info.plist */,
+			);
+			path = "日历UITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CF924B161ECACE7A00DF3100 /* 日历 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CF924B441ECACE7B00DF3100 /* Build configuration list for PBXNativeTarget "日历" */;
+			buildPhases = (
+				CF924B131ECACE7A00DF3100 /* Sources */,
+				CF924B141ECACE7A00DF3100 /* Frameworks */,
+				CF924B151ECACE7A00DF3100 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "日历";
+			productName = "日历";
+			productReference = CF924B171ECACE7A00DF3100 /* 日历.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CF924B2F1ECACE7B00DF3100 /* 日历Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CF924B471ECACE7B00DF3100 /* Build configuration list for PBXNativeTarget "日历Tests" */;
+			buildPhases = (
+				CF924B2C1ECACE7B00DF3100 /* Sources */,
+				CF924B2D1ECACE7B00DF3100 /* Frameworks */,
+				CF924B2E1ECACE7B00DF3100 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CF924B321ECACE7B00DF3100 /* PBXTargetDependency */,
+			);
+			name = "日历Tests";
+			productName = "日历Tests";
+			productReference = CF924B301ECACE7B00DF3100 /* 日历Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		CF924B3A1ECACE7B00DF3100 /* 日历UITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CF924B4A1ECACE7B00DF3100 /* Build configuration list for PBXNativeTarget "日历UITests" */;
+			buildPhases = (
+				CF924B371ECACE7B00DF3100 /* Sources */,
+				CF924B381ECACE7B00DF3100 /* Frameworks */,
+				CF924B391ECACE7B00DF3100 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CF924B3D1ECACE7B00DF3100 /* PBXTargetDependency */,
+			);
+			name = "日历UITests";
+			productName = "日历UITests";
+			productReference = CF924B3B1ECACE7B00DF3100 /* 日历UITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CF924B0F1ECACE7A00DF3100 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = bjzyzl;
+				TargetAttributes = {
+					CF924B161ECACE7A00DF3100 = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+					};
+					CF924B2F1ECACE7B00DF3100 = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = CF924B161ECACE7A00DF3100;
+					};
+					CF924B3A1ECACE7B00DF3100 = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = CF924B161ECACE7A00DF3100;
+					};
+				};
+			};
+			buildConfigurationList = CF924B121ECACE7A00DF3100 /* Build configuration list for PBXProject "日历" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CF924B0E1ECACE7900DF3100;
+			productRefGroup = CF924B181ECACE7A00DF3100 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CF924B161ECACE7A00DF3100 /* 日历 */,
+				CF924B2F1ECACE7B00DF3100 /* 日历Tests */,
+				CF924B3A1ECACE7B00DF3100 /* 日历UITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CF924B151ECACE7A00DF3100 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF80B2AD1F0B932500326C3B /* 1.png in Resources */,
+				CF924B2A1ECACE7B00DF3100 /* LaunchScreen.storyboard in Resources */,
+				CF924B271ECACE7B00DF3100 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CF924B2E1ECACE7B00DF3100 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CF924B391ECACE7B00DF3100 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CF924B131ECACE7A00DF3100 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF924B221ECACE7B00DF3100 /* ViewController.m in Sources */,
+				CF8374901F0CDD5F0045D5D4 /* ZYQCalenderView.m in Sources */,
+				CF924B1F1ECACE7B00DF3100 /* AppDelegate.m in Sources */,
+				CF924B1C1ECACE7A00DF3100 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CF924B2C1ECACE7B00DF3100 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF924B351ECACE7B00DF3100 /* __Tests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CF924B371ECACE7B00DF3100 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF924B401ECACE7B00DF3100 /* __UITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CF924B321ECACE7B00DF3100 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CF924B161ECACE7A00DF3100 /* 日历 */;
+			targetProxy = CF924B311ECACE7B00DF3100 /* PBXContainerItemProxy */;
+		};
+		CF924B3D1ECACE7B00DF3100 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CF924B161ECACE7A00DF3100 /* 日历 */;
+			targetProxy = CF924B3C1ECACE7B00DF3100 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		CF924B281ECACE7B00DF3100 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CF924B291ECACE7B00DF3100 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CF924B421ECACE7B00DF3100 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CF924B431ECACE7B00DF3100 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CF924B451ECACE7B00DF3100 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "日历/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bjzyzl.--";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		CF924B461ECACE7B00DF3100 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "日历/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bjzyzl.--";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		CF924B481ECACE7B00DF3100 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "日历Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bjzyzl.--Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/日历.app/日历";
+			};
+			name = Debug;
+		};
+		CF924B491ECACE7B00DF3100 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "日历Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bjzyzl.--Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/日历.app/日历";
+			};
+			name = Release;
+		};
+		CF924B4B1ECACE7B00DF3100 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "日历UITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bjzyzl.--UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "日历";
+			};
+			name = Debug;
+		};
+		CF924B4C1ECACE7B00DF3100 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "日历UITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bjzyzl.--UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "日历";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CF924B121ECACE7A00DF3100 /* Build configuration list for PBXProject "日历" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CF924B421ECACE7B00DF3100 /* Debug */,
+				CF924B431ECACE7B00DF3100 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CF924B441ECACE7B00DF3100 /* Build configuration list for PBXNativeTarget "日历" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CF924B451ECACE7B00DF3100 /* Debug */,
+				CF924B461ECACE7B00DF3100 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CF924B471ECACE7B00DF3100 /* Build configuration list for PBXNativeTarget "日历Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CF924B481ECACE7B00DF3100 /* Debug */,
+				CF924B491ECACE7B00DF3100 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CF924B4A1ECACE7B00DF3100 /* Build configuration list for PBXNativeTarget "日历UITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CF924B4B1ECACE7B00DF3100 /* Debug */,
+				CF924B4C1ECACE7B00DF3100 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CF924B0F1ECACE7A00DF3100 /* Project object */;
+}
