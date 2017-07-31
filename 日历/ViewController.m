@@ -22,7 +22,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     ZYQCalenderView * calender = [[ZYQCalenderView alloc]init];
-    calender.frame = CGRectMake(0, 64, [UIScreen mainScreen].bounds.size.width, 250);
+    calender.frame = CGRectMake(0, 64, [UIScreen mainScreen].bounds.size.width, 60 + ([UIScreen mainScreen].bounds.size.width - 20) / 7 * 6);
     [self.view addSubview:calender];
 }
 
