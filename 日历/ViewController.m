@@ -18,11 +18,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-   
+    
     self.view.backgroundColor = [UIColor whiteColor];
     
     ZYQCalenderView * calender = [[ZYQCalenderView alloc]init];
     calender.frame = CGRectMake(0, 64, [UIScreen mainScreen].bounds.size.width, 60 + ([UIScreen mainScreen].bounds.size.width - 20) / 7 * 6);
+    //    calender.frame = CGRectMake(0, 64, [UIScreen mainScreen].bounds.size.width, self.view.frame.size.height - 64);
+    //    calender.collectionStyle = ZYQCollectionViewVertical;
     [self.view addSubview:calender];
 }
 

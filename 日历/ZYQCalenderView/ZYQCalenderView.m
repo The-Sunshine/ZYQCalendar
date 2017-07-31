@@ -7,6 +7,7 @@
 //
 
 #import "ZYQCalenderView.h"
+#import "ZYQCalenderTool.h"
 
 #define cellWidth ([UIScreen mainScreen].bounds.size.width - 20) / 7
 #define MSW ([UIScreen mainScreen].bounds.size.width)
@@ -31,6 +32,8 @@ static NSString * cellID = @"cell";
     CGFloat       _collectionHeight;
     
 }
+
+#pragma mark - init
 -(instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -40,6 +43,7 @@ static NSString * cellID = @"cell";
 
     return self;
 }
+
 -(void)awakeFromNib
 {
     [super awakeFromNib];
@@ -47,28 +51,43 @@ static NSString * cellID = @"cell";
     [self initialization];
     [self initUI];
 }
+
+#pragma mark - initialization
 -(void)initialization
 {
     _page = 0;
     _collectionHeight = cellWidth * 6;
     _selectBGColor = [UIColor yellowColor];
+    _collectionStyle = ZYQCollectionViewHorizon;
 }
+
+#pragma mark - layoutSubviews
 -(void)layoutSubviews
 {
     [super layoutSubviews];
     
     CGRect dateLabelRect = (CGRect){ self.center.x - 50, 0, 100, 30};
-
-    _lastButton.frame = (CGRect){ self.center.x - 140, 0, 60, 30};
     
-    _dateLabel.frame = dateLabelRect;
-    
-    _nextButton.frame = (CGRect){ self.center.x + 50 + 30, 0, 60, 30};
-    
-    _imageView.frame = CGRectMake(0, dateLabelRect.size.height + dateLabelRect.origin.y, MSW, 30);
-    
-    _collectionView.frame = (CGRect){10, dateLabelRect.size.height + dateLabelRect.origin.y + _imageView.frame.size.height, MSW - 20, _collectionHeight};
+    if (_collectionStyle == ZYQCollectionViewHorizon) {
+        
+        _lastButton.frame = (CGRect){ self.center.x - 140, 0, 60, 30};
+        
+        _dateLabel.frame = dateLabelRect;
+        
+        _nextButton.frame = (CGRect){ self.center.x + 50 + 30, 0, 60, 30};
+        
+        _imageView.frame = CGRectMake(0, dateLabelRect.size.height + dateLabelRect.origin.y, MSW, 30);
+        
+        _collectionView.frame = (CGRect){10, dateLabelRect.size.height + dateLabelRect.origin.y + _imageView.frame.size.height, MSW - 20, _collectionHeight};
+    }else
+    {
+        _imageView.frame = CGRectMake(0, 0, MSW, 30);
+        
+        _collectionView.frame = (CGRect){10, _imageView.frame.size.height, MSW - 20, self.frame.size.height - _imageView.frame.size.height};
+    }
 }
+
+#pragma mark - initUI
 -(void)initUI
 {
     UIButton * lastButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -87,7 +106,7 @@ static NSString * cellID = @"cell";
     
     UILabel * dateLabel = [[UILabel alloc]init];
     dateLabel.textAlignment = NSTextAlignmentCenter;
-    dateLabel.text = [NSString stringWithFormat:@"%@",[self getDate:[self dayInThePreviousMonth:_page]]];
+    dateLabel.text = [NSString stringWithFormat:@"%@",[ZYQCalenderTool getDate:[ZYQCalenderTool dayInThePreviousMonth:_page]]];
     dateLabel.textColor = [UIColor blackColor];
     [self addSubview:dateLabel];
     _dateLabel = dateLabel;
@@ -108,79 +127,6 @@ static NSString * cellID = @"cell";
     _collectionView = collectionView;
 }
 
-#pragma mark - category
--(NSString *)getDate:(NSDate *)date{ //获取当前日期
-    
-    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-
-    // 定义一个时间字段的旗标，指定将会获取指定年、月、日、时、分、秒的信息
-    unsigned unitFlags = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay;
-    
-    // 获取不同时间字段的信息
-    NSDateComponents* comp = [gregorian components:unitFlags fromDate:date];
-    
-    // 获取各时间字段的数值
-    NSString * DateTime = [NSString stringWithFormat:@"%ld-%ld-%ld",comp.year,comp.month,comp.day];
-    
-    return DateTime;
-}
-
-- (NSInteger)getNumberOfDaysInMonth:(NSDate *)date //获取某月天数
-{
-    NSCalendar * calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian]; // 指定日历的算法
-    NSDate * currentDate = date;
-    // 只要个时间给日历,就会帮你计算出来。这里的时间取当前的时间。
-    NSRange range = [calendar rangeOfUnit:NSCalendarUnitDay
-                                   inUnit: NSCalendarUnitMonth
-                                  forDate:currentDate];
-    return range.length;
-}
-
-- (NSDate *)dayInThePreviousMonth:(NSInteger)month // 某个月
-{
-    NSDate * date = [NSDate date];
-    NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
-    dateComponents.month = month;
-    return [[NSCalendar currentCalendar] dateByAddingComponents:dateComponents toDate:date options:0];
-}
-
--(NSInteger)getWeeklyOrdinality:(NSUInteger)index // 计算这个月的第一天是礼拜几
-{
-    NSDate * date = [self dayInThePreviousMonth:_page];
-    
-    BOOL ok = [[NSCalendar currentCalendar] rangeOfUnit:NSCalendarUnitMonth startDate:&date interval:NULL forDate:date];
-   
-    NSAssert1(ok, @"Failed to calculate the first day of the month based on %@", self);
-
-    NSUInteger i = [[NSCalendar currentCalendar] ordinalityOfUnit:NSCalendarUnitDay inUnit:NSCalendarUnitWeekOfYear forDate:date];
-    
-    switch (i) {
-        case 1:
-            return index + 1;
-            break;
-        case 2:
-            return index + 1 - 1;
-            break;
-        case 3:
-            return index + 1 - 2;
-            break;
-        case 4:
-            return index + 1 - 3;
-            break;
-        case 5:
-            return index + 1 - 4;
-            break;
-        case 6:
-            return index + 1 - 5;
-            break;
-        case 7:
-            return index + 1 - 6;
-            break;
-        default:
-            return index;
-            break;
-    }
-}
 #pragma mark - clickEvent
 -(void)monthClick:(UIButton *)button
 {
@@ -201,12 +147,9 @@ static NSString * cellID = @"cell";
 #pragma mark - collectionViewDataSource
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    NSUInteger currentDay = [self getNumberOfDaysInMonth:[self dayInThePreviousMonth:_page]]; // 当月天数
+    NSUInteger currentDay = [ZYQCalenderTool getNumberOfDaysInMonth:[ZYQCalenderTool dayInThePreviousMonth:_page]]; // 当月天数
     
-    NSInteger labelCount = -[self getWeeklyOrdinality:0] + 1; //上月n天
-    
-    CGRect frame = _collectionView.frame;
-    frame.size.height = cellWidth * 6;
+    NSInteger labelCount = -[ZYQCalenderTool getWeeklyOrdinality:0 Page:_page] + 1; //上月n天
     
     if (labelCount + currentDay > 35) {
         
@@ -237,31 +180,49 @@ static NSString * cellID = @"cell";
     date.textColor = [UIColor lightGrayColor];
     [cell.contentView addSubview:date];
     
-    NSInteger labelCount = 0;
-   
-    // 获取本月一日星期几 根据i值
-    labelCount = [self getWeeklyOrdinality:indexPath.row];
-    
-    //本月天数
-    NSUInteger currentDay = [self getNumberOfDaysInMonth:[self dayInThePreviousMonth:_page]];
-    
-    if (labelCount < 1) {
+    if (_collectionStyle == ZYQCollectionViewHorizon) {
         
-        //上月天数
-        NSInteger lastCount = [self getNumberOfDaysInMonth:[self dayInThePreviousMonth:_page - 1]];
-        labelCount = labelCount + lastCount;
-    }
-    else if (labelCount > currentDay)
+        NSInteger labelCount = 0;
+        
+        // 获取本月一日星期几 根据i值
+        labelCount = [ZYQCalenderTool getWeeklyOrdinality:indexPath.row Page:_page];
+        
+        //本月天数
+        NSUInteger currentDay = [ZYQCalenderTool getNumberOfDaysInMonth:[ZYQCalenderTool dayInThePreviousMonth:_page]];
+        
+        if (labelCount < 1) {
+            
+            //上月天数
+            NSInteger lastCount = [ZYQCalenderTool getNumberOfDaysInMonth:[ZYQCalenderTool dayInThePreviousMonth:_page - 1]];
+            labelCount = labelCount + lastCount;
+        }
+        else if (labelCount > currentDay)
+        {
+            labelCount = labelCount - currentDay;
+        }
+        else
+        {
+            date.textColor = [UIColor blackColor];
+        }
+        
+        date.text = [NSString stringWithFormat:@"%ld",labelCount];
+    }else
     {
-        labelCount = labelCount - currentDay;
+        
     }
-    else
-    {
-        date.textColor = [UIColor blackColor];
-    }
-    
-    date.text = [NSString stringWithFormat:@"%ld",labelCount];
     return cell;
+}
+
+#pragma mark - collectionViewDelegate
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    if (_collectionStyle == ZYQCollectionViewHorizon) {
+        
+        return 1;
+    }else
+    {
+        return 0;
+    }
 }
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -280,32 +241,31 @@ static NSString * cellID = @"cell";
     NSInteger labelCount = 0;
 
     // 获取本月一日星期几 根据i值
-    labelCount = [self getWeeklyOrdinality:indexPath.row];
+    labelCount = [ZYQCalenderTool getWeeklyOrdinality:indexPath.row Page:_page];
     
     //本月天数
-    NSUInteger currentDay = [self getNumberOfDaysInMonth:[self dayInThePreviousMonth:_page]];
+    NSUInteger currentDay = [ZYQCalenderTool getNumberOfDaysInMonth:[ZYQCalenderTool dayInThePreviousMonth:_page]];
     
     NSInteger lastCount = 0;
    
     if (labelCount < 1) {
         
         //上月天数
-        lastCount = [self getNumberOfDaysInMonth:[self dayInThePreviousMonth:_page - 1]];
+        lastCount = [ZYQCalenderTool getNumberOfDaysInMonth:[ZYQCalenderTool dayInThePreviousMonth:_page - 1]];
         labelCount = labelCount + lastCount;
         
-        _dateLabel.text = [NSString stringWithFormat:@"%@",[self getDate:[self dayInThePreviousMonth:_page - 1]]];
-
+        _dateLabel.text = [NSString stringWithFormat:@"%@",[ZYQCalenderTool getDate:[ZYQCalenderTool dayInThePreviousMonth:_page - 1]]];
     }
     else if (labelCount > currentDay)
     {
         // 下月
         labelCount = labelCount - currentDay;
         
-        _dateLabel.text = [NSString stringWithFormat:@"%@",[self getDate:[self dayInThePreviousMonth:_page + 1]]];
+        _dateLabel.text = [NSString stringWithFormat:@"%@",[ZYQCalenderTool getDate:[ZYQCalenderTool dayInThePreviousMonth:_page + 1]]];
         
     }else
     {
-        _dateLabel.text = [NSString stringWithFormat:@"%@",[self getDate:[self dayInThePreviousMonth:_page]]];
+        _dateLabel.text = [NSString stringWithFormat:@"%@",[ZYQCalenderTool getDate:[ZYQCalenderTool dayInThePreviousMonth:_page]]];
     }
   
     //替换日
