@@ -13,7 +13,11 @@ typedef NS_ENUM(NSInteger, ZYQCollectionViewStyle) {
     ZYQCollectionViewHorizon,
 };
 
+@protocol ZYQCalenderViewDelegate <NSObject>
 
+-(void)ZYQCalenderViewClick:(NSString *)date;
+
+@end
 @interface ZYQCalenderView : UIView
 
 /** collectionView高度 */
@@ -24,5 +28,9 @@ typedef NS_ENUM(NSInteger, ZYQCollectionViewStyle) {
 
 /** 定义枚举类型 ZYQCollectionViewHorizon为默认类型 不需设置*/
 @property (nonatomic,assign) NSInteger collectionStyle;
+
+/** 代理 */
+@property (nonatomic,weak) id<ZYQCalenderViewDelegate> delegate;
+
 
 @end

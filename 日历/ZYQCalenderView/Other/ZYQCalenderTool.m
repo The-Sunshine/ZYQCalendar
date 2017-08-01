@@ -20,8 +20,26 @@
     // 获取不同时间字段的信息
     NSDateComponents* comp = [gregorian components:unitFlags fromDate:date];
     
+    NSString * month ;
+    NSString * day;
     // 获取各时间字段的数值
-    NSString * DateTime = [NSString stringWithFormat:@"%ld-%ld-%ld",comp.year,comp.month,comp.day];
+    if (comp.month < 10) {
+        
+        month = [NSString stringWithFormat:@"0%ld",comp.month];
+    }else
+    {
+        month = [NSString stringWithFormat:@"%ld",comp.month];
+    }
+    
+    if (comp.day < 10) {
+        
+        day = [NSString stringWithFormat:@"0%ld",comp.day];
+    }else
+    {
+        day = [NSString stringWithFormat:@"%ld",comp.day];
+    }
+    
+    NSString * DateTime = [NSString stringWithFormat:@"%ld-%@-%@",comp.year,month,day];
     
     return DateTime;
 }

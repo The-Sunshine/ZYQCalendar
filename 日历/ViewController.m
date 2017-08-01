@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "ZYQCalenderView.h"
 
-@interface ViewController ()
+@interface ViewController ()<ZYQCalenderViewDelegate>
 
 @end
 
@@ -20,12 +20,20 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor whiteColor];
-    
+  
     ZYQCalenderView * calender = [[ZYQCalenderView alloc]init];
-    calender.frame = CGRectMake(0, 64, [UIScreen mainScreen].bounds.size.width, 60 + ([UIScreen mainScreen].bounds.size.width - 20) / 7 * 6);
-    //    calender.frame = CGRectMake(0, 64, [UIScreen mainScreen].bounds.size.width, self.view.frame.size.height - 64);
-    //    calender.collectionStyle = ZYQCollectionViewVertical;
+    calender.frame = CGRectMake(0, 64, [UIScreen mainScreen].bounds.size.width, self.view.frame.size.height - 64);
+    calender.delegate = self;
     [self.view addSubview:calender];
+    
+    //竖向 注释为横
+    calender.collectionStyle = ZYQCollectionViewVertical;
+}
+
+
+-(void)ZYQCalenderViewClick:(NSString *)date
+{
+    NSLog(@"-----%@",date);
 }
 
 @end
