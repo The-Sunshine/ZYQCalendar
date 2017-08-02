@@ -31,5 +31,11 @@
     label.textColor = [UIColor blackColor];
     [self addSubview:label];
     _dateLabel = label;
+    
+    UIView * line = [[UIView alloc]init];
+    line.frame = CGRectMake(0, 0, self.frame.size.width, 0.3);
+    line.backgroundColor = [UIColor lightGrayColor];
+    [self addSubview:line];
+    _line = line;
 }
 @end

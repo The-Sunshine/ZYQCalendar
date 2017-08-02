@@ -14,7 +14,7 @@
   
     self = [super initWithFrame:frame];
     if (self) {
-        
+
         [self initUI];
     }
     return self;
@@ -22,18 +22,16 @@
 
 -(void)initUI
 {
-    CGFloat cellWidth = ([UIScreen mainScreen].bounds.size.width - 20) / 7 - 10;
     UILabel * date = [[UILabel alloc]init];
-    date.frame = (CGRect){ 5, 5, cellWidth, cellWidth};
     date.textAlignment = NSTextAlignmentCenter;
     date.font = [UIFont systemFontOfSize:13];
+    date.layer.cornerRadius = 5;
+    date.layer.masksToBounds = YES;
     [self addSubview:date];
     _dateLabel = date;
-    
-    UIView * line = [[UIView alloc]init];
-    line.frame = CGRectMake(0, 0, cellWidth + 10, 0.3);
-    line.backgroundColor = [UIColor lightGrayColor];
-    [self addSubview:line];
-    _line = line;
+}
+-(void)layoutSubviews
+{
+    _dateLabel.frame = (CGRect){ 0, 0, self.frame.size.width, self.frame.size.height};
 }
 @end

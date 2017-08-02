@@ -12,6 +12,4 @@
 
 @property (nonatomic,strong) UILabel * dateLabel;
 
-@property (nonatomic,strong) UIView * line;
-
 @end
