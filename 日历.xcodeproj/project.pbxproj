@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CF80B2AD1F0B932500326C3B /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = CF80B2AC1F0B932500326C3B /* 1.png */; };
 		CF8374901F0CDD5F0045D5D4 /* ZYQCalenderView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF83748F1F0CDD5F0045D5D4 /* ZYQCalenderView.m */; };
 		CF86ED881F302B4E00E841C8 /* ZYQCalenderTool.m in Sources */ = {isa = PBXBuildFile; fileRef = CF86ED851F302B4E00E841C8 /* ZYQCalenderTool.m */; };
 		CF86ED891F302B4E00E841C8 /* ZYQReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF86ED871F302B4E00E841C8 /* ZYQReusableView.m */; };
@@ -39,7 +38,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		CF80B2AC1F0B932500326C3B /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
 		CF83748E1F0CDD5F0045D5D4 /* ZYQCalenderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYQCalenderView.h; sourceTree = "<group>"; };
 		CF83748F1F0CDD5F0045D5D4 /* ZYQCalenderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYQCalenderView.m; sourceTree = "<group>"; };
 		CF86ED841F302B4E00E841C8 /* ZYQCalenderTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYQCalenderTool.h; sourceTree = "<group>"; };
@@ -141,7 +139,6 @@
 				CF924B201ECACE7B00DF3100 /* ViewController.h */,
 				CF924B211ECACE7B00DF3100 /* ViewController.m */,
 				CF83748D1F0CDD5F0045D5D4 /* ZYQCalenderView */,
-				CF80B2AC1F0B932500326C3B /* 1.png */,
 				CF924B261ECACE7B00DF3100 /* Assets.xcassets */,
 				CF924B281ECACE7B00DF3100 /* LaunchScreen.storyboard */,
 				CF924B2B1ECACE7B00DF3100 /* Info.plist */,
@@ -283,7 +280,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF80B2AD1F0B932500326C3B /* 1.png in Resources */,
 				CF924B2A1ECACE7B00DF3100 /* LaunchScreen.storyboard in Resources */,
 				CF924B271ECACE7B00DF3100 /* Assets.xcassets in Resources */,
 			);

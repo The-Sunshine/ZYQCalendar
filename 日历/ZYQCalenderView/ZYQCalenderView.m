@@ -393,6 +393,8 @@ static NSString * reusableViewID = @"reusableViewID";
         
         [self.delegate ZYQCalenderViewClick:_dateLabel.text];
     }
+    
+    self.clickBlock(_dateLabel.text);
 }
 -(void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
 {

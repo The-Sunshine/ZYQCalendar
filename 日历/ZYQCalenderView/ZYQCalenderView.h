@@ -13,6 +13,8 @@ typedef NS_ENUM(NSInteger, ZYQCollectionViewStyle) {
     ZYQCollectionViewHorizon,
 };
 
+typedef void(^ZYQCalenderBlock)();
+
 @protocol ZYQCalenderViewDelegate <NSObject>
 
 -(void)ZYQCalenderViewClick:(NSString *)date;
@@ -24,7 +26,7 @@ typedef NS_ENUM(NSInteger, ZYQCollectionViewStyle) {
 @property (nonatomic,assign) CGFloat collectionHeight;
 
 /** 选中的cell背景颜色 */
-@property (nonatomic,strong) UIColor  * selectBGColor;
+@property (nonatomic,strong) UIColor * selectBGColor;
 
 /** 定义枚举类型 ZYQCollectionViewHorizon为默认类型 不需设置*/
 @property (nonatomic,assign) NSInteger collectionStyle;
@@ -32,5 +34,6 @@ typedef NS_ENUM(NSInteger, ZYQCollectionViewStyle) {
 /** 代理 */
 @property (nonatomic,weak) id<ZYQCalenderViewDelegate> delegate;
 
+@property (nonatomic,copy) ZYQCalenderBlock clickBlock;
 
 @end

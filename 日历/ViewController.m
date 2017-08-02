@@ -28,6 +28,11 @@
     
     //竖向 注释为横
     calender.collectionStyle = ZYQCollectionViewVertical;
+    
+    calender.clickBlock = ^(NSString * date){
+        
+        NSLog(@"-----%@",date);
+    };
 }
 
 
