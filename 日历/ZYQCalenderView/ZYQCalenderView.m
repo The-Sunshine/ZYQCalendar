@@ -404,7 +404,7 @@ static NSString * reusableViewID = @"reusableViewID";
 }
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    return CGSizeMake(([UIScreen mainScreen].bounds.size.width - 20) / 7, (NSInteger)cellHeight);
+    return CGSizeMake((NSInteger)((MSW - 20) / 7), (NSInteger)cellHeight);
 }
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
