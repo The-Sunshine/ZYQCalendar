@@ -16,7 +16,10 @@
 #define MSW ([UIScreen mainScreen].bounds.size.width)
 #define MSH ([UIScreen mainScreen].bounds.size.height)
 
+static const NSInteger yearMonthCount = 12; // 每年月数
+
 static const NSInteger lastYear = 100;
+
 static NSString * cellID = @"cell";
 static NSString * reusableViewID = @"reusableViewID";
 
@@ -39,6 +42,8 @@ static NSString * reusableViewID = @"reusableViewID";
     NSIndexPath * _indexPath;
     NSInteger     _page;
     NSArray     * _weekArray;
+    
+    NSString    * _horizonLastSelect; // 横向展示最后选中
 }
 
 #pragma mark - init
@@ -111,7 +116,7 @@ static NSString * reusableViewID = @"reusableViewID";
 
         _collectionView.frame = (CGRect){10, weekHeight, MSW - 20, self.frame.size.height - weekHeight};
         
-        [_collectionView selectItemAtIndexPath:[NSIndexPath indexPathForRow:28 inSection:12 * lastYear] animated:NO scrollPosition:UICollectionViewScrollPositionCenteredVertically];
+        [_collectionView selectItemAtIndexPath:[NSIndexPath indexPathForRow:28 inSection:yearMonthCount * lastYear] animated:NO scrollPosition:UICollectionViewScrollPositionCenteredVertically];
     }
 }
 
@@ -136,7 +141,8 @@ static NSString * reusableViewID = @"reusableViewID";
     
     UILabel * dateLabel = [[UILabel alloc]init];
     dateLabel.textAlignment = NSTextAlignmentCenter;
-    dateLabel.text = [NSString stringWithFormat:@"%@",[ZYQCalenderTool getDate:[ZYQCalenderTool dayInThePreviousMonth:_page]]];
+    NSString * date = [ZYQCalenderTool getDate:[ZYQCalenderTool dayInThePreviousMonth:_page]];
+    dateLabel.text = [date substringToIndex:date.length - 3];
     dateLabel.font = [UIFont systemFontOfSize:13];
     [self addSubview:dateLabel];
     _dateLabel = dateLabel;
@@ -177,6 +183,10 @@ static NSString * reusableViewID = @"reusableViewID";
         _page ++;
     }
     
+    NSString * selectDate = [NSString stringWithFormat:@"%@",[ZYQCalenderTool getDate:[ZYQCalenderTool dayInThePreviousMonth:_page]]];
+
+    _dateLabel.text = [selectDate substringToIndex:selectDate.length - 3];
+
     [_collectionView reloadData];
 }
 
@@ -190,22 +200,24 @@ static NSString * reusableViewID = @"reusableViewID";
         index = _page;
     }else
     {
-        index = section - 12 * lastYear;
+        index = section - yearMonthCount * lastYear;
     }
     
     NSUInteger currentDay = [ZYQCalenderTool getNumberOfDaysInMonth:[ZYQCalenderTool dayInThePreviousMonth:index]]; // 当月天数
     
     NSInteger labelCount = -[ZYQCalenderTool getWeeklyOrdinality:0 Page:index] + 1; //上月n天
     
-    if (labelCount + currentDay > 35) {
-        
+    if (labelCount + currentDay > 35)
+    {
         _collectionHeight = cellHeight * 6;
         return 42;
-    }else if (labelCount + currentDay == 28)
+    }
+    else if (labelCount + currentDay == 28)
     {
         _collectionHeight = cellHeight * 4;
         return 28;
-    }else
+    }
+    else
     {
         _collectionHeight = cellHeight * 5;
         return 35;
@@ -219,6 +231,8 @@ static NSString * reusableViewID = @"reusableViewID";
         
         [label removeFromSuperview];
     }
+    
+    cell.dateLabel.backgroundColor = _normalBGColor;
     
     NSInteger labelCount = 0;
     
@@ -261,22 +275,31 @@ static NSString * reusableViewID = @"reusableViewID";
         }
         
         // 获取本月一日星期几 根据indexPath.row
-        labelCount = [ZYQCalenderTool getWeeklyOrdinality:indexPath.row Page:indexPath.section - 12 * lastYear];
+        labelCount = [ZYQCalenderTool getWeeklyOrdinality:indexPath.row Page:indexPath.section - yearMonthCount * lastYear];
         
         //本月天数
-        NSUInteger currentDay = [ZYQCalenderTool getNumberOfDaysInMonth:[ZYQCalenderTool dayInThePreviousMonth:indexPath.section - 12 * lastYear]];
+        NSUInteger currentDay = [ZYQCalenderTool getNumberOfDaysInMonth:[ZYQCalenderTool dayInThePreviousMonth:indexPath.section - yearMonthCount * lastYear]];
         
         // 同一个section 只显示当月日期
         if (labelCount > currentDay || labelCount == 0)
         {
             cell.hidden = YES;
-        }else
+        }
+        else
         {
             cell.hidden = NO;
         }
     }
     cell.dateLabel.text = [NSString stringWithFormat:@"%ld",labelCount];
+    
+    // 横向展示时 当选中上月或下月日期时 判定选中状态
+    if ([cell.dateLabel.text isEqualToString:_horizonLastSelect] && cell.dateLabel.textColor == _normalTextColor && _collectionStyle == ZYQCollectionViewHorizon)
+    {
+        cell.dateLabel.backgroundColor = _selectBGColor;
 
+        cell.dateLabel.textColor = _selectTextColor;
+    }
+    
     return cell;
 }
 
@@ -287,7 +310,7 @@ static NSString * reusableViewID = @"reusableViewID";
         
         ZYQReusableView * headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:reusableViewID forIndexPath:indexPath];
         
-        NSString * date = [ZYQCalenderTool getDate:[ZYQCalenderTool dayInThePreviousMonth:indexPath.section - 12 * lastYear]];
+        NSString * date = [ZYQCalenderTool getDate:[ZYQCalenderTool dayInThePreviousMonth:indexPath.section - yearMonthCount * lastYear]];
         headerView.dateLabel.text = [date substringToIndex:7];
         
         // 获取当前日期
@@ -311,7 +334,7 @@ static NSString * reusableViewID = @"reusableViewID";
     {
         return CGSizeMake(0, 0);
     }
-    return CGSizeMake( MSW, 40);
+    return CGSizeMake(MSW, 40);
 }
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
@@ -321,84 +344,126 @@ static NSString * reusableViewID = @"reusableViewID";
     }else
     {
         /** 12月 *（前n年+后n年) */
-        return 12 * lastYear * 2;
+        return yearMonthCount * lastYear * 2;
     }
 }
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     ZYQCollectionCell *cell = (ZYQCollectionCell *)[collectionView cellForItemAtIndexPath:indexPath];
-    cell.dateLabel.textColor = _selectTextColor;
     
-    if (indexPath == _indexPath) {
-        
-        cell.dateLabel.backgroundColor = _normalBGColor;
-        cell.dateLabel.textColor = _normalTextColor;
-        _indexPath = nil;
-        return;
-    }
-    _normalBGColor = cell.dateLabel.backgroundColor;
-    _indexPath = indexPath;
-    cell.dateLabel.backgroundColor = _selectBGColor;
-  
-    NSInteger index = 0;
     if (_collectionStyle == ZYQCollectionViewHorizon) {
         
-        index = _page;
-    }else
-    {
-        index = indexPath.section - 12 * lastYear;
-    }
-    
-    NSInteger labelCount = 0;
-
-    // 获取本月一日星期几 根据i值
-    labelCount = [ZYQCalenderTool getWeeklyOrdinality:indexPath.row Page:index];
-    
-    //本月天数
-    NSUInteger currentDay = [ZYQCalenderTool getNumberOfDaysInMonth:[ZYQCalenderTool dayInThePreviousMonth:index]];
-    
-    NSInteger lastCount = 0;
-   
-    if (labelCount < 1) {
+        _horizonLastSelect = cell.dateLabel.text;
         
-        //上月天数
-        lastCount = [ZYQCalenderTool getNumberOfDaysInMonth:[ZYQCalenderTool dayInThePreviousMonth:index - 1]];
-        labelCount = labelCount + lastCount;
-        
-        _dateLabel.text = [NSString stringWithFormat:@"%@",[ZYQCalenderTool getDate:[ZYQCalenderTool dayInThePreviousMonth:index - 1]]];
-    }
-    else if (labelCount > currentDay)
-    {
-        // 下月
-        labelCount = labelCount - currentDay;
-        
-        _dateLabel.text = [NSString stringWithFormat:@"%@",[ZYQCalenderTool getDate:[ZYQCalenderTool dayInThePreviousMonth:index + 1]]];
-        
-    }else
-    {
-        _dateLabel.text = [NSString stringWithFormat:@"%@",[ZYQCalenderTool getDate:[ZYQCalenderTool dayInThePreviousMonth:index]]];
-    }
-  
-    //替换日
-    if ([NSString stringWithFormat:@"%ld",labelCount].length == 1) {
-        
-        _dateLabel.text = [_dateLabel.text stringByReplacingCharactersInRange:NSMakeRange(_dateLabel.text.length - 2, 2) withString:[NSString stringWithFormat:@"0%ld",labelCount]];
-    }else
-    {
-        _dateLabel.text = [_dateLabel.text stringByReplacingCharactersInRange:NSMakeRange(_dateLabel.text.length - 2, 2) withString:[NSString stringWithFormat:@"%ld",labelCount]];
+        [_collectionView reloadData];
     }
 
-    if (self.delegate && [self.delegate respondsToSelector:@selector(ZYQCalenderViewClick:)]) {
+    NSString * selectDate;
+    
+    // 判断上月日期
+    if (cell.dateLabel.textColor == _otherTextColor)
+    {
+        // 判断上一月 下一月
+        if ([cell.dateLabel.text intValue] < 15)
+        {
+            _page ++;
+        }
+        else
+        {
+            _page --;
+        }
         
-        [self.delegate ZYQCalenderViewClick:_dateLabel.text];
+        // 获取日期
+        selectDate = [NSString stringWithFormat:@"%@",[ZYQCalenderTool getDate:[ZYQCalenderTool dayInThePreviousMonth:_page]]];
+        
+        _dateLabel.text = [selectDate substringToIndex:selectDate.length - 3];
+        
+        // 替换日
+        if (cell.dateLabel.text.length == 1)
+        {
+            selectDate = [NSString stringWithFormat:@"%@-0%@",_dateLabel.text,cell.dateLabel.text];
+        }
+        else
+        {
+            selectDate = [NSString stringWithFormat:@"%@-%@",_dateLabel.text,cell.dateLabel.text];
+        }
+    }
+    else
+    {
+        cell.dateLabel.textColor = _selectTextColor;
+        
+        if (indexPath == _indexPath) return;
+        
+        _normalBGColor = cell.dateLabel.backgroundColor;
+        _indexPath = indexPath;
+        cell.dateLabel.backgroundColor = _selectBGColor;
+        
+        NSInteger index = 0;
+        if (_collectionStyle == ZYQCollectionViewHorizon) {
+            
+            index = _page;
+        }else
+        {
+            index = indexPath.section - yearMonthCount * lastYear;
+        }
+        
+        NSInteger labelCount = 0;
+        
+        // 获取本月一日星期几 根据i值
+        labelCount = [ZYQCalenderTool getWeeklyOrdinality:indexPath.row Page:index];
+        
+        // 本月天数
+        NSUInteger currentDay = [ZYQCalenderTool getNumberOfDaysInMonth:[ZYQCalenderTool dayInThePreviousMonth:index]];
+        
+        NSInteger lastCount = 0;
+        
+        if (labelCount < 1) {
+            
+            // 上月天数
+            lastCount = [ZYQCalenderTool getNumberOfDaysInMonth:[ZYQCalenderTool dayInThePreviousMonth:index - 1]];
+            labelCount = labelCount + lastCount;
+            
+            selectDate = [NSString stringWithFormat:@"%@",[ZYQCalenderTool getDate:[ZYQCalenderTool dayInThePreviousMonth:index - 1]]];
+        }
+        else if (labelCount > currentDay)
+        {
+            // 下月
+            labelCount = labelCount - currentDay;
+            
+            selectDate = [NSString stringWithFormat:@"%@",[ZYQCalenderTool getDate:[ZYQCalenderTool dayInThePreviousMonth:index + 1]]];
+        }
+        else
+        {
+            selectDate = [NSString stringWithFormat:@"%@",[ZYQCalenderTool getDate:[ZYQCalenderTool dayInThePreviousMonth:index]]];
+        }
+        
+        selectDate = [selectDate substringToIndex:7];
+        
+        // 替换日
+        if ([NSString stringWithFormat:@"%ld",labelCount].length == 1)
+        {
+            selectDate = [NSString stringWithFormat:@"%@-0%ld",selectDate,labelCount];
+        }
+        else
+        {
+            selectDate = [NSString stringWithFormat:@"%@-%ld",selectDate,labelCount];
+        }
     }
     
-    self.clickBlock(_dateLabel.text);
+    // 代理 block 回调
+    if (self.delegate && [self.delegate respondsToSelector:@selector(ZYQCalenderViewClick:)])
+    {
+        [self.delegate ZYQCalenderViewClick:selectDate];
+    }
+    
+    self.clickBlock(selectDate);
 }
 -(void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     ZYQCollectionCell *cell = (ZYQCollectionCell *)[collectionView cellForItemAtIndexPath:indexPath];
+
+    if (cell.dateLabel.textColor == _otherTextColor) return;
+    
     cell.dateLabel.textColor = _normalTextColor;
     cell.dateLabel.backgroundColor = _normalBGColor;
 }

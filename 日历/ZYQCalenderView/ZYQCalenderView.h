@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 
 typedef NS_ENUM(NSInteger, ZYQCollectionViewStyle) {
-    ZYQCollectionViewVertical,
-    ZYQCollectionViewHorizon,
+    ZYQCollectionViewVertical,  // 竖向展示
+    ZYQCollectionViewHorizon,   // 横向展示
 };
 
 typedef void(^ZYQCalenderBlock)();

@@ -30,6 +30,7 @@
     [self addSubview:date];
     _dateLabel = date;
 }
+
 -(void)layoutSubviews
 {
     _dateLabel.frame = (CGRect){ 0, 0, self.frame.size.width, self.frame.size.height};

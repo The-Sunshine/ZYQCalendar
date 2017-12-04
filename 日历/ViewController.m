@@ -27,7 +27,7 @@
     [self.view addSubview:calender];
     
     //竖向 注释为横
-    calender.collectionStyle = ZYQCollectionViewVertical;
+//    calender.collectionStyle = ZYQCollectionViewVertical;
     
     calender.clickBlock = ^(NSString * date){
         
